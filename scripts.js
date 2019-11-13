@@ -4,9 +4,12 @@ chrome.runtime.onInstalled.addListener(function() {
     chrome.storage.local.set(string, function() {
         console.log("The string has been set");
     });
+    chrome.storage.local.get(['key'], function(result) {
+        console.log(result.key)
+    })
   });
 */
-//commented out section that sets string automatically
+//commented out section that sets and retrieves string automatically
 
 let ret = () => {
     chrome.storage.local.get(['key'], function(result) {

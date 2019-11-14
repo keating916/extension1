@@ -7,5 +7,8 @@
       "scripts": ["scripts.js"],
       "persistent": false
     },
+    "browser_action": {
+    "default_icon": "logo.png"
+    }
     "manifest_version": 2
   }

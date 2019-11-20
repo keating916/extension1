@@ -2,7 +2,7 @@
     "name": "String Extension",
     "version": "1.0",
     "description": "extension built to store a string",
-    "permissions": ["storage"],
+    "permissions": ["storage", "declarativeContent"],
     "background": {
       "scripts": ["scripts.js"],
       "persistent": false

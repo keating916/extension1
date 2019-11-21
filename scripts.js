@@ -1,20 +1,14 @@
-var rule1 = {
-        conditions: [
-          new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { hostEquals: 'www.prifina.com', schemes: ['https'] }
-          })
+chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
+      chrome.declarativeContent.onPageChanged.addRules([{
+        conditions: [new chrome.declarativeContent.PageStateMatcher({
+          pageUrl: {hostEquals: 'www.prifina.com'},
+        })
         ],
-        actions: [ new chrome.declarativeContent.ShowPageAction() ]
-      };
-
-chrome.runtime.onInstalled.addListener(function(details) {
-        chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
-          chrome.declarativeContent.onPageChanged.addRules([rule1]);
-        });
-      });
+            actions: [new chrome.declarativeContent.ShowPageAction()]
+      }]);
+    });
 
 
-/* 
 let string = {"key": "This is the default string"};
 chrome.runtime.onInstalled.addListener(function() {
     chrome.storage.local.set(string, function() {
@@ -24,7 +18,7 @@ chrome.runtime.onInstalled.addListener(function() {
         console.log(result.key)
     })
   });
-*/
+
 //commented out section that sets and retrieves string automatically
 
 let ret = () => {

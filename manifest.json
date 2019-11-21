@@ -1,16 +1,20 @@
-{
+  {
     "name": "String Extension",
     "version": "1.0",
     "description": "extension built to store a string",
-    "permissions": ["storage", "declarativeContent"],
+    "permissions": ["activeTab", "declarativeContent", "storage"],
     "background": {
       "scripts": ["scripts.js"],
       "persistent": false
     },
-    "browser_action": {
-    "default_icon": "logo.png",
-    "default_title": "Prifina",
-    "default_popup": "popup.html"
+    "page_action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "activeLogo.png"
+      }
+    },
+    "icons": {
+      "16": "activeLogo.png"
     },
     "manifest_version": 2
   }

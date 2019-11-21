@@ -1,6 +1,7 @@
 console.log("loaded");
+
 let ret = () => {
-    chrome.storage.local.get(['key'], function(result) {
+    chrome.storage.sync.get(['key'], function(result) {
         console.log(`Returned string: ${result.key}`)
     })
 }; //returns string set by set()
@@ -16,3 +17,5 @@ document.getElementById("submitButton").addEventListener("click", e=> {
 	set(s.value)
 	console.log(s.value);
 })
+
+ret();

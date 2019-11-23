@@ -1,21 +1,16 @@
 console.log("loaded");
-
+let section = document.getElementById("stringSection");
+let p = document.createElement("h1");
+section.appendChild(p);
 let ret = () => {
-    chrome.storage.sync.get(['key'], function(result) {
-        console.log(`Saved String: ${result.key}`)
+    chrome.storage.sync.get(["prifinaKey"], function(result) {
+        let s = `requesting: ${result.prifinaKey}`;
+        p.textContent = s;
     })
-}; //returns string set by set()
-
-let set = (string) => {
-    chrome.storage.sync.set({"key": string}, function() {
-        console.log("string has been reset to:"+ string)
-    })
-} //sets string
-
-document.getElementById("submitButton").addEventListener("click", e=> {
-	let s = document.getElementById("string");
-    set(s.value)
-    s.value="";
-})
-
+}; //returns string set by set() in scripts.js
 ret();
+
+
+setInterval(function() {
+    ret()
+}, 1000)

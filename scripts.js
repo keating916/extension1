@@ -6,31 +6,29 @@ chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
         ],
             actions: [new chrome.declarativeContent.ShowPageAction()]
       }]);
-    });
+  }
+);
 
-/*
-let string = {"key": "This is the default string"};
-chrome.runtime.onInstalled.addListener(function() {
-    chrome.storage.local.set(string, function() {
-        console.log("The string has been set");
-    });
-    chrome.storage.local.get(['key'], function(result) {
-        console.log(result.key)
-    })
-  });
-*/
-//commented out section that sets and retrieves string automatically
-/*
-let ret = () => {
-    chrome.storage.local.get(['key'], function(result) {
-        console.log(`Returned string: ${result.key}`)
-    })
-}; //returns string set by set()
+let minutesForInterval=10;
 
+let api = "https://api.punkapi.com/v2/beers/random"
+   
 let set = (string) => {
-    chrome.storage.local.set({"key": string}, function() {
-        console.log("string has been reset")
-    })
+  chrome.storage.sync.set({"prifinaKey": string}, function() {
+      console.log("string has been reset to:"+ string)
+  })
 } //sets string
-** Moved to popup.js;
-*/
+
+let getApiString = () => {
+  let response = fetch(api)
+      .then(response => response.json())
+      .then(data => {
+        set(data[0].name);
+      })
+}
+getApiString();
+
+chrome.runtime.onInstalled.addListener(function() {
+  setInterval(function() {
+    getApiString()}, 1000*30);
+});

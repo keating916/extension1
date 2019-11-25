@@ -7,9 +7,9 @@ chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
             actions: [new chrome.declarativeContent.ShowPageAction()]
       }]);
   }
-);
+);//Only show popup on "Prifina.com
 
-let minutesForInterval=10;
+let minutesForInterval=1;//changes how often a new string is retrieved
 
 let api = "https://api.punkapi.com/v2/beers/random"
    
@@ -25,10 +25,10 @@ let getApiString = () => {
       .then(data => {
         set(data[0].name);
       })
-}
-getApiString();
+}//API call and string set
+getApiString();//run on startup
 
 chrome.runtime.onInstalled.addListener(function() {
   setInterval(function() {
-    getApiString()}, 1000*30);
-});
+    getApiString()}, 1000*60*minutesForInterval);
+});//run after startup on interval

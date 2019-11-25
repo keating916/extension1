@@ -1,21 +1,28 @@
-# extension1
-very simple chrome extension that stores a string to local storage
+Chrome Extension
 
-To install extension:
-1: clone or download files
-2: go to: chrome://extensions
-3: toggle "Developer mode" switch in upper right hand corner
-4: click "Load unpacked" button and navigate to the folder containing the files you cloned
+Installation
+1a: If using the Command line, clone this repo to chosen folder: git@github.com:keating916/extension1.git
 
-A new extension should appear called "String Extension 1.0"
+1b: If using browser GUI, navigate to: https://github.com/keating916/extension1, and download a zip file, then unzip the file
 
-Once loaded click the "background views" link and navigate to the console.
+2: In Google Chrome, navigate to: chrome://extensions, and click on the developer mode toggle in the upper right hand corner
 
-copy and paste into the console and hit enter: set("This is the default string")
+3: You should now see three buttons on the left side, click “Load unpacked” and chose the folder that contains the downloaded extension.
 
-close the entire window and return to chrome://extensions and type: ret()
+4: You should now see a new icon in the upper right corner of the browser, a black prifina logo on a gray background.
 
-you should see "This is the default string" returned.
 
-You can run the set() function with what ever string you would like and it gets stored over the previous string
-and will be returned with the ret() function
+
+Using extension
+
+1: In a new tab, navigate to www.prifina.com, and the extension logo background will turn red indicating that it is active. 
+
+2: Click on the now active logo, and a string will appear.
+
+3: On extension tab click on background page link, you will see the same string.
+
+4: Right click on the extension, and click “Inspect Popup”
+
+5: On inspection pane, navigate to the “console”
+
+6: There, you should see the string update on this page and background page
